@@ -35,7 +35,22 @@ This backend is meant to serve as a foundation for an event‑management / meetu
 
 ## Getting Started / Installation
 
-- Clone repo from https://github.com/mishapravdiuk/event‑management.git
-- Add file.env. Set custom values for variables used in event_management_server/configs/example_file.env file
-- Build docker. docker compose -f docker-compose.dev.yaml build
-- Then start the containers docker compose -f docker-compose.dev.yaml up -d
+- Clone repo from 
+```bash
+git clone https://github.com/mishapravdiuk/event-management.git
+cd event_management_server
+```
+- Add file.env. Set custom values for variables used in example file
+```bash
+cp configs/example_file.env configs/file.env
+nano configs/file.env
+```
+
+- Build docker
+```bash
+cd ..
+docker compose -f docker-compose.dev.yaml build
+```
+- Start the services
+```bash
+docker compose -f docker-compose.dev.yaml up -d
