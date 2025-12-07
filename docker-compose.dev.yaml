@@ -1,0 +1,44 @@
+version: '3.3'
+volumes:
+  postgresbackups:
+  pg_data:
+services:
+  event_management_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: event_management_server
+    restart: on-failure
+    image: event_management_server
+    ports:
+      - "58000:8000"
+    volumes:
+      - ./event_management_server:/event_management_server
+    command: sh -c "sleep 10 && /bin/sh ./runner.dev.sh"
+    env_file:
+      - ./event_management_server/configs/file.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  postgres:
+    container_name: event_management_postgres
+    restart: on-failure
+    image: kartoza/postgis:15-3.3
+    env_file: ./event_management_server/configs/file.env
+    volumes:
+      - ./docker_data/pg_data:/var/lib/postgresql
+      - ./docker_data/postgresbackups:/backups
+      - ./docker_data/instance_db:/opt/postgres/data
+      - ./docker_data/instance_pg_wall:/opt/postgres/pg_wal
+    ports:
+      - "25434:5432"
+  redis:
+    image: "redis:latest"
+    container_name: event_management_redis
+    restart: on-failure
+    env_file: ./event_management_server/configs/file.env
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-h", "localhost", "ping" ]
+      interval: 1m
+      timeout: 5s

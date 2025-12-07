@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "event-management-server"
+version = "0.1.0"
+description = ""
+authors = ["mykhailo.pravdiuk <mykhailo.pravdiuk@semiotics-lab.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+django = "^6.0"
+psycopg2 = "^2.9.11"
+django-ninja = "^1.5.1"
+pydantic = {extras = ["email"], version = "^2.12.5"}
+django-admin-inline-paginator = "^0.4.0"
+phonenumbers = "^9.0.20"
+django-phonenumber-field = "^8.4.0"
+pyjwt = "^2.10.1"
+django-redis = "5.2.0"
+redis = "5.0.3"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.11.0"
+isort = "^7.0.0"
+flake8 = "^7.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

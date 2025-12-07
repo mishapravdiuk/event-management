@@ -1,0 +1,5 @@
+NINJA_API_TITLE = "API for Event Management server"
+NINJA_API_DESCRIPTION = ""
+NINJA_API_VERSION = "0.0.1"
+NINJA_API_DOCS_URL = "/docs"
+NINJA_API_OPENAPI_URL = "/openapi.json"
