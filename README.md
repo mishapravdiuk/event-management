@@ -38,7 +38,7 @@ This backend is meant to serve as a foundation for an event‑management / meetu
 - Clone repo from 
 ```bash
 git clone https://github.com/mishapravdiuk/event-management.git
-cd event_management_server
+cd event-management/event_management_server
 ```
 - Add file.env. Set custom values for variables used in example file
 ```bash
